@@ -4,15 +4,39 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'site/**'
+      - 'server.js'
+      **'package.json'
+      - '.github/w**kflows/azure-deploy.yml'
+
+workflo**dispatch:
+
+permissions:
+  content** read
+
+concurrency:
+  group: azur**production-deploy
+  cancel-in-pro**ess: true
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    ru**-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+  **  - name: Hae GitHubin tiedostot
+**      uses: actions/checkout@v4
 
-      - name: Deploy to Azure Web App
+**    - name: Ota Node.js käyttöön
+**      uses: actions/setup-node@v4**       with:
+          node-versi**: '22'
+
+      - name: Tarkista Ja**Script
+        run: |
+          node --check server.js
+          node --check site/app.js
+
+      - name: Julkaise Azure App Serviceen
         uses: azure/webapps-deploy@v3
         with:
           app-name: rg-porssisahko
