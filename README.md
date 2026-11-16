@@ -1,4 +1,4 @@
-# Pörssivirta – pörssisähkön web-sovellus
+# pörssisähkön web-sovellus
 
 Responsiivinen suomenkielinen pörssisähkön hintanäkymä. Sovellus hakee Suomen varttihinnat Porssisahko.net API v2 -rajapinnasta ja näyttää nykyisen hinnan, seuraavan vuorokauden keskiarvon, halvimmat ja kalleimmat vartit, hintakaavion sekä edullisimman neljän tunnin jakson.
 
