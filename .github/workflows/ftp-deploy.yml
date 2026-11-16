@@ -35,4 +35,3 @@ jobs:
           port: 21
           local-dir: ./site/
           server-dir: /site/wwwroot/
-
