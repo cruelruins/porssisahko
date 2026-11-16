@@ -1,6 +1,7 @@
 'use strict';
 
-const API_URL = 'https://corsproxy.io/?https://api.porssisahko.net/v2/latest-prices.json';
+const API_URL = 'https://api.allorigins.win/raw?url='
+  + encodeURIComponent('https://api.porssisahko.net/v2/latest-prices.json');
 const CACHE_KEY = 'porssivirta.prices.v1';
 const CACHE_MAX_AGE_MS = 60 * 1000;
 const AUTO_REFRESH_MS = 5 * 60 * 1000;
