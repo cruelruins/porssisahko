@@ -17,4 +17,4 @@ jobs:
         with:
           app-name: rg-porssisahko
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ./site
+          package: .
