@@ -1,0 +1,37 @@
+name: Julkaise pörssisähkö-sivusto FTP:llä
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'site/**'
+      - '.github/workflows/ftp-deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ftp-production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Siirrä sivusto FTPS-palvelimelle
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Hae GitHubin tiedostot
+        uses: actions/checkout@v6
+
+      - name: Julkaise sivusto FTPS-palvelimelle
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./site/
+          server-dir: /site/wwwroot/
